@@ -97,12 +97,9 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 > [<font color="red">2013 - Face Liveness Detection with Component Dependent Descriptor</font>](http://www.cbsr.ia.ac.cn/users/zlei/papers/ICB2013/YANG-ICB13.pdf)
 
 - 基本思想：文理统计特性
-
 - 模型架构：
-
   1. 检测面部位置，并将面部分割为6个不同区域（轮廓，面部，左右眼，鼻，嘴）
   2. 提取特征，LBP、HOG等，并将不同部位的特征进行联结
-
   3. SVM分类real/spoofing
 
 <img src="liveness detection img/24.jpg" width="800px">
@@ -162,7 +159,6 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 - ***基于文理***，主要表现为：
 
 1. 活体和PA的局部区域的具有不同<font color="gree">特征文理</font>，统计特性不同
-
 2. 活体和PA的面部<font color="gree">深度图</font>不同（PA为扁平，活体有人脸形状）
 
 <img src="liveness detection img/25.jpg" width="350px">
@@ -232,9 +228,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
     预处理后的特征为 $X_t\in\mathbb{R}^{W\times H\times K}$，其中$W,H,K$表示特征宽、高、通道，$t=1,2,...,T$表示视频帧，这些特征中包含有细粒的文理特征。
 
-    将$X_t$分解为$K$个时间序列$\left\{C_k\in\mathbb{R}^{W\times H\times T}\right\}_{k=1}^K$，再使用光流方法通过这些特征提取面部微运动。
-
-    ​					$\frac{\part{I}}{\part{x}}u+\frac{\part{I}}{\part{y}}v+\frac{\part{I}}{\part{t}}=0$
+    将$X_t$分解为$K$个时间序列$\{C_k\in\mathbb{R}^{W\times H\times T}\}_{k=1}^K$，再使用光流方法通过这些特征提取面部微运动：$\frac{\part{I}}{\part{x}}u+\frac{\part{I}}{\part{y}}v+\frac{\part{I}}{\part{t}}=0$
 
     其中$I(x,y,t)$是$(x,y)$处的亮度信息，$u,v$分别是$(x,y)$处的像素的水平、垂直速度（光流optical flow）
 
@@ -293,7 +287,6 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 **<font color="blue">motivation/基本思想</font>**
 
 - **基于文理**——活体和PA的面部<font color="gree">深度图</font>不同（PA为扁平，活体有人脸形状）
-
 - **基于相关生物信号**——通过面部信息可测量相关<font color="gree">rPPG</font>(remote Photoplephysmography)信号，如***心跳***等
 
 <img src="liveness detection img/13.jpg" width="500px">
@@ -311,7 +304,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
     **rPPG标签**：从没有姿态、表情、照明变化的视频提取出的活体rPPG信号作为标签，用于计算rPPG损失
 
     计算：对DeFA估计出的面部区域，计算正交色度信号$x_f=3r_f-2g_f$，$y_f=1.5r_f+g_f-1.5b_f$，再计算血液流动信号$\gamma=\frac{\sigma(x_f)}{\sigma(y_f)}$，再计算信号$p=3(1-\frac{\gamma}{2})r_f-2(1+\frac{\gamma}{2})g_f+\frac{2\gamma}{2}b_f$，对$p$进行FFT即为rPPG
-    
+
     
 
 <img src="liveness detection img/14.jpg" width="1000px">
@@ -345,10 +338,8 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 - **需注意细节**
 
   - two-stream training
-
     1. 输入面部图$I$和深度图标签$D$，训练CNN部分
     2. 输入面部图序列${I_j}_{j=1}^{N_f}$，深度图标签${D_j}_{j=1}^{N_f}$，估计的3D面部形状图${S_j}_{j=1}^{N_f}$，rPPG信号标签，训练CNN和RNN部分
-
   - testing：根据分类得分 $score=||\widehat{f}||_2^2+\lambda||\widehat{D}||_2^2$进行活体判断
 
 - **结果**
@@ -382,13 +373,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 <img src="liveness detection img/36.jpg" width="600px">
 
 - **Spoof noise pattern study**
-
   - 退化过程：
     1. color distortion：spoof介质色域更窄，导致颜色空间投影
     2. Display artifacts：相机在获取纸张、屏幕图像时，会产生颜色近似、下采样等过程，导致高频分量损失、模糊、像素扰动等
     3. Presenting artifacts:：用于显示图像的纸张、屏幕与介质产生交互作用，包括反射、表面透明度等变化，此过程的噪声是加性（additive）
     4. Imaging artifacts：CMOS和CCD的传感器阵列的成像矩阵会有光干涉，在replay attack和某些print attack中产生失真alising和摩尔纹moire pattern，此过程的噪声也是加性的
-
   - 退化图像的频谱分析
 
 <img src="liveness detection img/37.jpg" width="700px">
@@ -475,23 +464,23 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/1.jpg" width="700px">
 
-​	在PA和liveness中，各器官间的角度不同，即$$(a):\alpha>\beta_{2}, \beta_{1}<\gamma,   (b):\alpha'<\beta_{2}', \beta_{1}'>\gamma'$$
+​	在PA和liveness中，各器官间的角度不同，即$(a):\alpha>\beta_{2}, \beta_{1}<\gamma,   (b):\alpha'<\beta_{2}', \beta_{1}'>\gamma'$
 
 ​	针对面部的平移和旋转，存在不同的几何关系：
 
 <img src="liveness detection img/2.jpg" width="400px">
 
-​		在实际场景、PA场景中，$$d1, d2$$存在不同的几何关系，可通过该几何关系判断
+​		在实际场景、PA场景中，$d1, d2$存在不同的几何关系，可通过该几何关系判断
 
-​			real scene: $$d1'/d2'=d1/d2$$，其中$$d1'$$是$$d1$$的估计
+​			real scene: $d1'/d2'=d1/d2$，其中$d1'$是$d1$的估计
 
-​			print attack: $$d1'=0,d2'=0$$
+​			print attack: $d1'=0,d2'=0$
 
 ​			replay attack:
 
-​					 $$d1'/d2'=d1/d2$$ in perfect spoofing scene (keep stationary, nearly impossible)
+​					 $d1'/d2'=d1/d2$ in perfect spoofing scene (keep stationary, nearly impossible)
 
-​					$$d1'/d2'\ne d1/d2$$ in usual spoofing scene
+​					$d1'/d2'\ne d1/d2$ in usual spoofing scene
 
 ​		面部变化和运动非常复杂（包括上述平移、旋转，还包括混合运动、非刚性形变等），但通过上述分析，实际的活体和PA所产生的深度图(包括时域和空域)有很大区别，据此可以对活体和非活体进行区分。两者有何区别有待深入研究，网络会自行对这些区别进行提取。
 
@@ -499,7 +488,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 - **单帧场景**
 
-  - ***深度图的生成***：通过**[<font color="gree">PRNet(2017)</font>](http://openaccess.thecvf.com/content_ECCV_2018/html/Yao_Feng_Joint_3D_Face_ECCV_2018_paper.html)**估计活体面部深度图，得到$$V_{n\times3}$$用于表示n个面部关键点的3D坐标，再投影到2D的UV空间，得到$$D\in\mathbb{R}^{32\times32}$$作为深度图标签$$D^t$$
+  - ***深度图的生成***：通过**[<font color="gree">PRNet(2017)</font>](http://openaccess.thecvf.com/content_ECCV_2018/html/Yao_Feng_Joint_3D_Face_ECCV_2018_paper.html)**估计活体面部深度图，得到$V_{n\times3}$用于表示n个面部关键点的3D坐标，再投影到2D的UV空间，得到$D\in\mathbb{R}^{32\times32}$作为深度图标签$D^t$
 
   <img src="liveness detection img/3.jpg" width="500px">
 
@@ -509,13 +498,13 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
   - ***depth loss*** = 欧几里得距离损失 + 对比(contrast)深度损失，两者分别为
 
-    ​	$$L_{single}^{absolute}=||D_{single}-D||_2^2$$
+    ​	$L_{single}^{absolute}=||D_{single}-D||_2^2$
 
-    ​	$$L_{single}^{contrast}=\sum_{i}||K_i^{contrast}\bigodot D_{single}-K_i^{contrast}\bigodot D||_2^2$$	
+    ​	$L_{single}^{contrast}=\sum_{i}||K_i^{contrast}\bigodot D_{single}-K_i^{contrast}\bigodot D||_2^2$	
 
-    ​	$$L_{single}=L_{single}^{absolute}+L_{single}^{contrast}$$
+    ​	$L_{single}=L_{single}^{absolute}+L_{single}^{contrast}$
 
-    其中，$$K_{i}^{contrast}$$为
+    其中，$K_{i}^{contrast}$为
 
     <img src="liveness detection img/6.jpg" width="300px">
 
@@ -530,8 +519,8 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
   - ***OFFB模块***
 
     optical flow guided feature block，用于提取**短期**瞬时运动特征，**主要是两连续帧之间**
-  
-    在时刻$$t$$，$$(x,y)$$处的亮度信息为I(x,y,t)，对其求导，并将求导结果重新调整
+
+    在时刻$t$，$(x,y)$处的亮度信息为I(x,y,t)，对其求导，并将求导结果重新调整
 
   <img src="liveness detection img/7.jpg" width="350px">
 
@@ -547,54 +536,53 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
     <img src="liveness detection img/9.jpg" width="250px">
 
-    $$X_{t},H_{t},U_{t},R_{t}$$表示输入、出、update gate、reset gate，$$K_{r},K_{u},K_{h}$$卷积核，$$H_{t}$$即ConvGRU的深度图
+    $X_{t},H_{t},U_{t},R_{t}$表示输入、出、update gate、reset gate，$K_{r},K_{u},K_{h}$卷积核，$H_{t}$即ConvGRU的深度图
 
   - ***深度图和活体判别***
 
     融合深度图 = 短期深度图 + 长期深度图
 
-    ​		$$D_{fusion}^{t}=\alpha*D_{single}^t+(1-\alpha)*D_{multi}^t, \alpha\in[0,1]$$
+    ​		$D_{fusion}^{t}=\alpha*D_{single}^t+(1-\alpha)*D_{multi}^t, \alpha\in[0,1]$
 
     多帧场景的损失函数（对活体判别，深度图具有决定性作用，二分类辅助判别深度图的类别）包括：
 
     1. 多帧深度图损失 = 欧几里得距离损失 + 对比深度损失
 
-       ​	$$L_{multi}^{absolute}(t)=||D_{fusion}^t-D^t||_2^2$$
+       ​	$L_{multi}^{absolute}(t)=||D_{fusion}^t-D^t||_2^2$
 
-       ​	$$L_{multi}^{contrast}(t)=\sum_{i}||K_i^{contrast}\bigodot D_{fusion}^t-K_i^{contrast}\bigodot D^t||_2^2$$
+       ​	$L_{multi}^{contrast}(t)=\sum_{i}||K_i^{contrast}\bigodot D_{fusion}^t-K_i^{contrast}\bigodot D^t||_2^2$
 
-       ​	$$L_{multi}^{depth}=\sum_{t}^{N_F-1}(L_{multi}^{absolute}(t)+L_{multi}^{contrast}(t))$$ 对所有帧求和
+       ​	$L_{multi}^{depth}=\sum_{t}^{N_F-1}(L_{multi}^{absolute}(t)+L_{multi}^{contrast}(t))$ 对所有帧求和
 
-       其中$$D^t$$是$$t$$时刻的深度图标签
-  
+       其中$D^t$是$t$时刻的深度图标签
+
     2. 多帧活体判别损失
-    
-       ​	$$L_{multi}^{binary}=-B^t*log(fcs([{D_{fusion}^t}^{N_f-1}]))$$ 
-    
-       其中$$B^t$$是$$t$$时刻的二分类标签，$${D_{fusion}^t}^{N_f-1}$$是$$N_f-1$$帧时(最后一帧时)，将前面所有时刻$$t$$产生的融合深度图进行拼接而来的总的深度图
-    
-       $$fcs$$表示网络的最后两个全连接层 + softmax(对攻击模式进行判别)，得到score + 0/1
-    
+
+       ​	$L_{multi}^{binary}=-B^t*log(fcs([{D_{fusion}^t}^{N_f-1}]))$ 
+
+       其中$B^t$是$t$时刻的二分类标签，${D_{fusion}^t}^{N_f-1}$是$N_f-1$帧时(最后一帧时)，将前面所有时刻$t$产生的融合深度图进行拼接而来的总的深度图
+
+       $fcs$表示网络的最后两个全连接层 + softmax(对攻击模式进行判别)，得到score + 0/1
+
     3. 总损失 = 深度图损失 + 活体判别损失
-    
-       ​	$$L_{multi}=\beta·L_{multi}^{binary}+(1-\beta)·L_{multi}^{depth}$$
+
+       ​	$L_{multi}=\beta·L_{multi}^{binary}+(1-\beta)·L_{multi}^{depth}$
 
 **<font color="blue">implementation/实现细节</font>**
 
 - **需注意细节**
-  
+
 - two-staged training
-  
+
   1. 通过单帧深度图损失训练单帧架构，得到一个基础的表示网络
-  
-  2. 固定单帧架构的参数，通过多帧混合损失微调多帧部分的参数。向网络输入$$N_f$$帧图像，每三帧采样一次
-  
+  2. 固定单帧架构的参数，通过多帧混合损失微调多帧部分的参数。向网络输入$N_f$帧图像，每三帧采样一次
+
 - testing:
-  
-  ​	$$\widehat{b}$$表示living logtis，$$\widehat{b}=fcs(D_{fusion}^t)$$，最终的living score为
-  
+
+  ​	$\widehat{b}$表示living logtis，$\widehat{b}=fcs(D_{fusion}^t)$，最终的living score为
+
   ​	$score=\beta·\widehat{b}+(1-\beta)·\frac{\sum_{t}^{N_f-1}||D_{fusion}^t*M_{fusion}^t||_1}{N_f-1}$，$M_{fusion}^t$为通过PRNet产生的t时刻的面部掩码
-  
+
 - **结果**
 
   OULU-NPU数据集intra-testing
@@ -608,5 +596,4 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 ​		hard examples
 
 <img src="liveness detection img/12.jpg" width="450px">
-
 
