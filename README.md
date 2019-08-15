@@ -135,7 +135,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 ## 深度学习方法论文调研
 
-##### An original face anti-spoofing approach using partial convolutional neural network
+#### An original face anti-spoofing approach using partial convolutional neural network
 
 [<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/7821013)
 
@@ -153,7 +153,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <br>
 
-##### Face anti-spoofing using patch and depth-based cnns
+#### Face anti-spoofing using patch and depth-based cnns
 
 [<font color="red">论文下载</font>](http://cvlab.cse.msu.edu/pdfs/FaceAntiSpoofingUsingPatchandDepthBasedCNNs.pdf)
 
@@ -208,7 +208,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <br>
 
-##### Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing
+#### Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing
 
 [<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/8272765)
 
@@ -278,7 +278,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <br>
 
-##### Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision
+#### Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision
 
 **[<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/8578146)**
 
@@ -354,7 +354,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <br>
 
-##### Face De-Spoofing: Anti-Spoofing via Noise Modeling
+#### Face De-Spoofing: Anti-Spoofing via Noise Modeling
 
 **[<font color="red">论文下载</font>](http://openaccess.thecvf.com/content_ECCV_2018/html/Yaojie_Liu_Face_De-spoofing_ECCV_2018_paper.html)**
 
@@ -450,7 +450,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <br>
 
-##### Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing
+#### Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing
 
 **[<font color="red">论文下载</font>](https://arxiv.org/abs/1811.05118)**
 
