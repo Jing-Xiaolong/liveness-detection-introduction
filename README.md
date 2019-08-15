@@ -1,4 +1,17 @@
-### 活体检测 liveness detection
+- [活体检测](#活体检测)
+- [传统方法论文调研](#传统方法论文调研)
+- [深度学习PA数据集](#深度学习PA数据集)
+- [深度学习方法论文调研](#深度学习方法论文调研)
+  - [An original face anti-spoofing approach using partial convolutional neural network](#An original face anti-spoofing approach using partial convolutional neural network)
+  - [Face anti-spoofing using patch and depth-based cnns](#Face anti-spoofing using patch and depth-based cnns)
+  - [Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing](#Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing)
+  - [Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision](#Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision)
+  - [Face De-Spoofing: Anti-Spoofing via Noise Modeling](#Face De-Spoofing: Anti-Spoofing via Noise Modeling)
+  - [Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing](#Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing)
+
+<br><br><br><br>
+
+## 活体检测
 
 **motivation**
 
@@ -14,9 +27,9 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 |      缺点      | 1. 对PA敏感，如replay/ 3D mask attack <br>2. 某一特征难以判断所有/大部分PAs | 1. 某些CNN方法仅将其视为二分类<br>2. 通过细节进行判别，并未学习到PA模式<br>    - 皮肤细节损失、色彩失真、摩尔纹、运动模式、形变 |
 | 常用的判别依据 | 1. **基于<font color="red">文理</font>——空域信息**：深度图、文理、各类算子 | 1. 基于**<font color="red">文理</font>——空域信息**<br>    - 包括深度图、文理、各类算子<br>    - 噪声分解<br>2. 基于**<font color="red">运动</font> ——时域信息**<br>    - 包括眨眼、运动模式等<br>3. 基于**<font color="red">其它信号</font>——主要为频域信息**<br>    - rPPG(非接触式获取生物信号，如心跳)<br>    - 光谱分析(活体和PA反射的频率响应不同) |
 
+<br>
 
-
-### Traditional方法-论文调研
+## 传统方法论文调研
 
 **传统方法大部分是基于文理，其基本思路为**
 
@@ -25,7 +38,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 3. 分类前预处理，如多通道联结、降维、编码、进一步特征提取等
 4. 特征输入分类器进行real/spoof二分类，如SVM、LR等
 
-
+<br>
 
 > [<font color="red">2015icip - Face anti-spoofing based on color texture analysis</font>](https://ieeexplore.ieee.org/abstract/document/7351280)
 
@@ -43,9 +56,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
   <img src="liveness detection img/19.jpg" width="500px">
 
-
-
-
+<br>
 
 > [<font color="red">2018 - Ccolbp: Chromatic cooccurrence
 > of local binary pattern for face presentation attack
@@ -56,9 +67,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/35.jpg" width="600px">
 
-
-
-
+<br>
 
 > [<font color="red">2012 - On the effectiveness
 > of local binary patterns in face anti-spoofing</font>](https://ieeexplore.ieee.org/abstract/document/6313548)
@@ -66,9 +75,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 - 基本思想：文理统计特性
 - 模型架构：<img src="liveness detection img/22.jpg" width="700px">
 
-
-
-
+<br>
 
 > [<font color="red">2012 - LBP-TOP based countermeasure against face spoofing attacks</font>](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=271BCC281BDD5D9B869D3DB92A278BB0?doi=10.1.1.493.6222&rep=rep1&type=pdf)
 >
@@ -79,9 +86,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/23.jpg" width="800px">
 
-
-
-
+<br>
 
 > [<font color="red">2017 - Face anti-spoofing based on color texture analysis</font>](https://ieeexplore.ieee.org/abstract/document/7351280)
 
@@ -90,9 +95,7 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/21.jpg" width="700px">
 
-
-
-
+<br>
 
 > [<font color="red">2013 - Face Liveness Detection with Component Dependent Descriptor</font>](http://www.cbsr.ia.ac.cn/users/zlei/papers/ICB2013/YANG-ICB13.pdf)
 
@@ -104,9 +107,9 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/24.jpg" width="800px">
 
+<br><br>
 
-
-### CNN-based PA数据集
+## 深度学习PA数据集
 
 [<font color="black">**1. Replay-attack 2012**</font>](https://www.idiap.ch/dataset/replayattack)
 
@@ -128,13 +131,13 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 1000subjects共21000视频样本，<font color="blue">目前只接受学术用途</font>，需由学术机构签署[CASIA-SURF release agreement](http://www.cbsr.ia.ac.cn/users/jwan/database/CASIA-SURF_agreement.pdf)才能下载
 
+<br><br>
 
+## 深度学习方法论文调研
 
+##### An original face anti-spoofing approach using partial convolutional neural network
 
-
-### CNN-based方法-论文调研
-
-> ##### [<font color="red">2016ipta - An original face anti-spoofing approach using partial convolutional neural network</font>](https://ieeexplore.ieee.org/document/7821013)
+[<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/7821013)
 
 **<font color="blue">motivation/基本思想</font>**
 
@@ -148,9 +151,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 
 
+<br>
 
+##### Face anti-spoofing using patch and depth-based cnns
 
-> ##### [<font color="red">2017ijcb - Face anti-spoofing using patch and depth-based cnns</font>](http://cvlab.cse.msu.edu/pdfs/FaceAntiSpoofingUsingPatchandDepthBasedCNNs.pdf)
+[<font color="red">论文下载</font>](http://cvlab.cse.msu.edu/pdfs/FaceAntiSpoofingUsingPatchandDepthBasedCNNs.pdf)
 
 **<font color="blue">缺点</font>**：性能堪忧，超不过传统方法
 
@@ -201,12 +206,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/28.jpg" width="450px">
 
+<br>
 
+##### Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing
 
-
-
-> [<font color="red">2017ijcb - Deep Convolutional Dynamic Texture Learning with Adaptive
-> Channel-discriminability for 3D Mask Face Anti-spoofing</font>](https://ieeexplore.ieee.org/document/8272765)
+[<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/8272765)
 
 **<font color="blue">motivation/基本思想</font>**
 
@@ -272,13 +276,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/31.jpg" width="500px">
 
+<br>
 
+##### Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision
 
-
-
-
-
-> ##### **[<font color="red">2018cvpr - Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision</font>](https://ieeexplore.ieee.org/document/8578146)**
+**[<font color="red">论文下载</font>](https://ieeexplore.ieee.org/document/8578146)**
 
 <font color="blue">**src codes**</font>：未开源
 
@@ -350,11 +352,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/17.jpg" width="800px">
 
+<br>
 
+##### Face De-Spoofing: Anti-Spoofing via Noise Modeling
 
-
-
-> ##### **[<font color="red">2018eccv - Face De-Spoofing: Anti-Spoofing via Noise Modeling</font>](http://openaccess.thecvf.com/content_ECCV_2018/html/Yaojie_Liu_Face_De-spoofing_ECCV_2018_paper.html)**
+**[<font color="red">论文下载</font>](http://openaccess.thecvf.com/content_ECCV_2018/html/Yaojie_Liu_Face_De-spoofing_ECCV_2018_paper.html)**
 
 <font color="blue">**src codes**</font>：[我是链接](https://github.com/yaojieliu/ECCV2018-FaceDeSpoofing)，README比较简略，源码很简略，约等于没有开源
 
@@ -446,13 +448,11 @@ PA - presentation attacks，包括：print, replay, 3D-mask, facial cosmetic mak
 
 <img src="liveness detection img/41.jpg" width="700px">
 
+<br>
 
+##### Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing
 
-
-
-
-
-> **[<font color="red">2019arXiv - Exploiting Temporal and Depth Information for Multi-frame face Anti-Spoofing</font>](https://arxiv.org/abs/1811.05118)**
+**[<font color="red">论文下载</font>](https://arxiv.org/abs/1811.05118)**
 
 **<font color="blue">src models</font>**：未开源
 
