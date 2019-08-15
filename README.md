@@ -2,7 +2,7 @@
 - [传统方法论文调研](#传统方法论文调研)
 - [深度学习PA数据集](#深度学习PA数据集)
 - [深度学习方法论文调研](#深度学习方法论文调研)
-  - [An original face anti-spoofing approach using partial convolutional neural network](#An original face anti-spoofing approach using partial convolutional neural network)
+  - [An original face anti-spoofing approach using partial convolutional neural network](# An original face anti-spoofing approach using partial convolutional neural network)
   - [Face anti-spoofing using patch and depth-based cnns](#Face anti-spoofing using patch and depth-based cnns)
   - [Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing](#Deep Convolutional Dynamic Texture Learning with Adaptive Channel-discriminability for 3D Mask Face Anti-spoofing)
   - [Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision](#Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision)
